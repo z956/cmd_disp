@@ -8,6 +8,7 @@ Include header ``dispatcher.h``.
 
 A command processing function can be a free function or a class member function.
 Use ``DISP_DEFINE_CMD`` to define it as a command function that the dispatcher accepts.
+
 .. code:: c++
 
     // A free function to process command
@@ -33,6 +34,7 @@ Use ``DISP_DEFINE_CMD`` to define it as a command function that the dispatcher a
     };
 
 Create an instance of the dispatcher and add functions into it.
+
 .. code:: c++
 
     cmd_disp::Dispatcher disp;
@@ -56,7 +58,9 @@ Create an instance of the dispatcher and add functions into it.
 
 By default, parameters are tokenized by spaces.
 Users can customize the tokenizer.
+
 .. code:: c++
+
     class ExampleTokenizer
     {
         std::vector<std::string> args;
@@ -109,7 +113,9 @@ LIMITATION
 * The translation function set is not flexible. Should provide customized translation set.
 * The input of function dispatch() must be a string.
 * Command functions cannot be overloadded.
+
 .. code:: c++
+
     void func(int, int)
     {
     }
@@ -129,7 +135,9 @@ LIMITATION
     disp.add("func", static_cast<void(*)(double, double)>(&func));
 
 * The default values of a command functions cannot affect dispatching.
+
 .. code:: c++
+
     void func(int a, int b = 5)
     {
     }
