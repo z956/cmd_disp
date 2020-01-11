@@ -143,7 +143,7 @@ struct CommandGetter<Iterator, double>
 class DefaultTokenizer
 {
 public:
-    using Iterator = std::vector<std::string>::iterator;
+    using Iterator = std::vector<std::string>::const_iterator;
 
 public:
     DefaultTokenizer(const std::string& cmd)
@@ -157,17 +157,17 @@ public:
         }
     }
 
-    const std::string name() const
+    std::string name() const
     {
         return tokens.at(0);
     }
 
-    Iterator begin()
+    Iterator begin() const
     {
         return tokens.begin() + 1;
     }
 
-    Iterator end()
+    Iterator end() const
     {
         return tokens.begin();
     }
